@@ -1,10 +1,10 @@
 const fs = require('fs'),
-  async = require('async'),
-  request = require('request'),
-  cheerio = require('cheerio'),
-  Client = require('ssh2').Client,
-  config = require('./json/config'),
-  login = require('./json/ftp')
+			async = require('async'),
+			request = require('request'),
+			cheerio = require('cheerio'),
+			Client = require('ssh2').Client,
+			config = require('./json/config'),
+			login = require('./json/ftp')
 
 var upload = process.argv.length === 3
 
@@ -49,15 +49,15 @@ function parseJson (results, isNext) {
 		if (v.type == 'ARTICLE') {
 
 			var id = v.id,
-        publication_date = v.publication_date,
-        photo = v.call_photo ? v.call_photo.url.split('?')[0] + '?width=975&ratio_y=2&ratio_x=3' : false,
-        legende = v.call_photo ? v.call_photo.caption : false,
-        credit = v.call_photo ? v.call_photo.credits : false,
-        titre = v.title,
-        chapo = v.subtitle,
-        auteur,
-        date,
-        texte
+					publication_date = v.publication_date,
+					photo = v.call_photo ? v.call_photo.url.split('?')[0] + '?width=975&ratio_y=2&ratio_x=3' : false,
+					legende = v.call_photo ? v.call_photo.caption : false,
+					credit = v.call_photo ? v.call_photo.credits : false,
+					titre = v.title,
+					chapo = v.subtitle,
+					auteur,
+					date,
+					texte
 
 			request(v.url, (err, res, html) => {
 				if (err) throw err
