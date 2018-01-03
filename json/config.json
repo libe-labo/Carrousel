@@ -1,0 +1,8 @@
+{
+  "dossier": 123456789,
+  "date": "YYYY/MM",
+  "slug": "slug-du-projet",
+  "titre": "Le titre du projet",
+  "chapo": "La chapo du projet. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus.",
+  "auteur": "Nom Prenom"
+}

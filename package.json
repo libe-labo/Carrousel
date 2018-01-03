@@ -1,0 +1,17 @@
+{
+  "name": "carrousel",
+  "version": "1.0.0",
+  "title": "Format Carrousel (Commerçants)",
+  "description": "Format crée à partir d'une série d'articles publiés dans un même dossier de libération.fr",
+  "author": "TomCourant",
+  "scripts": {
+    "build": "node index.js",
+    "update": "node index.js upload"
+  },
+  "devDependencies": {
+    "async": "^2.6.0",
+    "cheerio": "^0.22.0",
+    "request": "^2.83.0",
+    "ssh2": "^0.5.5"
+  }
+}
