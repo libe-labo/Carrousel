@@ -1,10 +1,10 @@
 const fs = require('fs'),
-    	async = require('async'),
-    	request = require('request'),
-    	cheerio = require('cheerio'),
-    	Client = require('ssh2').Client,
-      config = require('./json/config'),
-      login = require('./json/ftp')
+  async = require('async'),
+  request = require('request'),
+  cheerio = require('cheerio'),
+  Client = require('ssh2').Client,
+  config = require('./json/config'),
+  login = require('./json/ftp')
 
 var upload = process.argv.length === 3
 
@@ -49,15 +49,15 @@ function parseJson (results, isNext) {
 		if (v.type == 'ARTICLE') {
 
 			var id = v.id,
-					publication_date = v.publication_date,
-					photo = v.call_photo ? v.call_photo.url.split('?')[0] + '?width=975&ratio_y=2&ratio_x=3' : false,
-					legende = v.call_photo ? v.call_photo.caption : false,
-					credit = v.call_photo ? v.call_photo.credits : false,
-					titre = v.title,
-					chapo = v.subtitle,
-					auteur,
-					date,
-					texte
+        publication_date = v.publication_date,
+        photo = v.call_photo ? v.call_photo.url.split('?')[0] + '?width=975&ratio_y=2&ratio_x=3' : false,
+        legende = v.call_photo ? v.call_photo.caption : false,
+        credit = v.call_photo ? v.call_photo.credits : false,
+        titre = v.title,
+        chapo = v.subtitle,
+        auteur,
+        date,
+        texte
 
 			request(v.url, (err, res, html) => {
 				if (err) throw err
@@ -89,12 +89,12 @@ function parseJson (results, isNext) {
 
 	}, err => {
 
-	    if (err) throw err
+    if (err) throw err
 
-	    console.log('\n=> Datas of page ' + nthPage + ' have been scraped successfuly\n')
+    console.log('\n=> Datas of page ' + nthPage + ' have been scraped successfuly\n')
 
-	    if (isNext && (datas.length < 40)) requestJson(true)
-      else writeJson()
+    if (isNext && (datas.length < 40)) requestJson(true)
+    else writeJson()
 	})
 
 }
@@ -134,35 +134,35 @@ function uploadJson () {
 
   conn.on('ready', () => {
 
-      console.log('   * Start Client')
+    console.log('   * Start Client')
 
-      conn.sftp((err, sftp) => {
-          
-          if (err) {
-              throw err
-              sftp.end()
-              conn.end()
-          }
-   
-          var readStreamAll = fs.createReadStream('./json/datas.json')
-          var writeStreamAll = sftp.createWriteStream('./' + config.date + '/' + config.slug + '/assets/datas.json')
+    conn.sftp((err, sftp) => {
+        
+      if (err) {
+          throw err
+          sftp.end()
+          conn.end()
+      }
 
-          writeStreamAll.on(
-              'close',
-              () => {
-                  console.log('   * File ' + config.slug + '.json transfered successfully!')
+      var readStreamAll = fs.createReadStream('./json/datas.json')
+      var writeStreamAll = sftp.createWriteStream('./' + config.date + '/' + config.slug + '/assets/datas.json')
 
-                  sftp.end()
-                  conn.end()
+      writeStreamAll.on(
+        'close',
+        () => {
+          console.log('   * File ' + config.slug + '.json transfered successfully!')
 
-                  console.log('   * Stop Client')
-                  console.log('\n* End Process *\n')
-                  process.exit( 0 )
-              }
-          )
+          sftp.end()
+          conn.end()
 
-          readStreamAll.pipe( writeStreamAll )
-      })
+          console.log('   * Stop Client')
+          console.log('\n* End Process *\n')
+          process.exit( 0 )
+        }
+      )
+
+      readStreamAll.pipe( writeStreamAll )
+    })
   }).connect(login)
 
 }
