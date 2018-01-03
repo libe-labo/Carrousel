@@ -1,10 +1,10 @@
 const fs = require('fs'),
-			async = require('async'),
-			request = require('request'),
-			cheerio = require('cheerio'),
-			Client = require('ssh2').Client,
-			config = require('./json/config'),
-			login = require('./json/ftp')
+      async = require('async'),
+      request = require('request'),
+      cheerio = require('cheerio'),
+      Client = require('ssh2').Client,
+      config = require('./json/config'),
+      login = require('./json/ftp')
 
 var upload = process.argv.length === 3
 
