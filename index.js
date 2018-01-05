@@ -44,7 +44,7 @@ function parseJson (results, isNext) {
 
 	console.log('\n=> Parse json\n')
 
-	async.each(results, (v, callback) => {
+	async.eachSeries(results, (v, callback) => {
 
 		if (v.type == 'ARTICLE') {
 
@@ -103,7 +103,8 @@ function writeJson () {
 
   console.log('\n=> All ' + datas.length + ' datas have been scraped successfuly\n')
 
-  datas.sort((a, b) => b.publication_date - a.publication_date)
+  // Sort by pubication date
+  // datas.sort((a, b) => b.publication_date - a.publication_date)
 
   var json = {
     slug: config.slug,
