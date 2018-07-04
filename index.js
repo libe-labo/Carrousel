@@ -16,8 +16,8 @@ function requestJson (nextPage) {
 
   nthPage ++
 
-	var urlJson = 'https://statics.liberation.fr/mapi/sections/' + config.dossier + '/contents/?format=json'
-	if (nextPage) urlJson = 'https://statics.liberation.fr/mapi/sections/' + config.dossier + '/contents/?page=' + nthPage + '&format=json';
+	var urlJson = 'https://www.liberation.fr/mapi/sections/' + config.dossier + '/contents/?format=json'
+	if (nextPage) urlJson = 'https://www.liberation.fr/mapi/sections/' + config.dossier + '/contents/?page=' + nthPage + '&format=json';
 
 	request.get({
 		url: urlJson,
