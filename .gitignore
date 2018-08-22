@@ -45,6 +45,10 @@ Temporary Items
 .apdisk
 
 ### Node ###
+# Specific to this app
+dist
+json
+
 # Logs
 logs
 *.log
