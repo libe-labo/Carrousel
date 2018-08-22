@@ -15,8 +15,8 @@ $ npm install
 ```
 
 - Remplir le fichier `./json/config.json` :
-`max_articles` est une valeur optionnelle, permettant d'afficher "article n/max_articles". Si la valeur est autre qu'un entier supérieur à 0, l'app affiche "article n/nb-d-articles-trouvés"
-`order` est également optionnel, l'app affiche les articles dans l'ordre antéchronologique si la valeur est différente de `"chrono"`
+  - `max_articles` est une valeur optionnelle, permettant d'afficher "article n/max_articles". Si la valeur est autre qu'un entier supérieur à 0, l'app affiche "article n/nb-d-articles-trouvés"
+  - `order` est également optionnel, l'app affiche les articles dans l'ordre antéchronologique si la valeur est différente de `"chrono"`
 
 ```json
 {
