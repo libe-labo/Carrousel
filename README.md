@@ -59,7 +59,13 @@ $ browser-sync start -s "dist"
 }
 ```
 
-- Mettre à jour l'app :
+- Mettre à jour automatiquement l'app une fois par heure (implique de laisser ouverte la fenêtre de terminal, et donc de ne pas éteindre l'ordinateur qui exécute cette commande)
+
+```
+$ npm run auto-update
+```
+
+- Mettre à jour l'app une seule fois :
 
 ```
 $ npm run update

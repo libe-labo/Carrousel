@@ -6,12 +6,16 @@
   "author": "TomCourant",
   "scripts": {
     "build": "node index.js",
-    "update": "node index.js upload"
+    "update": "node index.js upload",
+    "auto-update": "node cron.js"
   },
   "devDependencies": {
     "async": "^2.6.0",
     "cheerio": "^0.22.0",
     "request": "^2.83.0",
     "ssh2": "^0.5.5"
+  },
+  "dependencies": {
+    "node-cron": "^1.2.1"
   }
 }
