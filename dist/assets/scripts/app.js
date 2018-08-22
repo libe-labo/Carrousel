@@ -12,13 +12,20 @@ $(function() {
     url: 'assets/datas.json',
     dataType: 'json',
     success: function(data){
-      // data.articles.reverse();
-      data.articles.forEach(function(v,i) {
-      	v.image = (i + 1) + '/' + data.articles.length;
+      const maxArticles = parseInt(data.max_articles, 10) > 0 ? parseInt(data.max_articles, 10) : data.articles.length
+      const sortedArticles = data.articles.sort((a, b) => {
+      	if (data.order === "chrono") return a.publication_date - b.publication_date
+      	return b.publication_date - a.publication_date
+      })
+      const sortedData = Object.assign({}, data, {
+    		articles: sortedArticles
+    	})
+      sortedData.articles.forEach(function(v,i) {
+      	v.image = (i + 1) + '/' + maxArticles;
       	v.chapo = v.chapo;
       	v.isOpen = false;
       });
-      init(data);
+      init(sortedData);
     }
   });
 

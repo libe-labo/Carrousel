@@ -103,14 +103,13 @@ function writeJson () {
 
   console.log('\n=> All ' + datas.length + ' datas have been scraped successfuly\n')
 
-  // Sort by pubication date
-  // datas.sort((a, b) => b.publication_date - a.publication_date)
-
   var json = {
     slug: config.slug,
     titre: config.titre,
     chapo: config.chapo,
     auteur: config.auteur,
+    max_articles: config.max_articles,
+    order: config.order,
     articles: datas
   }
 
@@ -124,7 +123,6 @@ function writeJson () {
 
     if (upload) uploadJson()
   })
-
 }
 
 function uploadJson () {
