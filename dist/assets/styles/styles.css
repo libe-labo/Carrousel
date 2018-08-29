@@ -52,12 +52,12 @@ transform: translate(-50%, -50%);
 .logo {width: 80px; margin: 0 auto;}
 .logo img {width: 100%;}
 
-.menu {position: absolute; top: 0; left: 0; width: 0; height: 100%; font-family: 'libesansweb-semicondensed'; letter-spacing: .08em; background: #222; color: #fff; overflow: hidden;}
+/*.menu {position: absolute; top: 0; left: 0; width: 0; height: 100%; font-family: 'libesansweb-semicondensed'; letter-spacing: .08em; background: #222; color: #fff; overflow: hidden;}
 .menu h1 {margin: 0; padding: 10px 50px; font-size: 2em; line-height: 1.8em; font-weight: 800;}
 .menu ul {margin: 0; padding: 15px 50px; height: 86%; overflow-y: auto;}
 .menu li {clear: both; margin-bottom: 5px; font-size: 1.2em; line-height: 25px; cursor: pointer; overflow: hidden;}
 .menu li .smallPicto {height: 25px; margin-right: 15px; background-size: 100%; background-position: top left; background-repeat: no-repeat;}
-.menu li .smallPicto img {width: 100%;}
+.menu li .smallPicto img {width: 100%;}*/
 .closeMenu {position: absolute; top: 15px; right: 15px; width: 50px; height: 50px; cursor: pointer;}
 .closeMenu:before, .closeMenu:after{content:''; height:4px; width:40px; display:block; background:#fff; position:absolute; top:22px; left:6px; transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg);}
 .closeMenu:after{transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);}
