@@ -160,7 +160,7 @@ $(function() {
 				resize: function() {
 					appW = $('#app').width();
 			    appH = $('#app').height();
-			    $('.menu ul').css('width', appW);
+			    // $('.menu ul').css('width', appW);
 			    openArticle = appW < 1024 ? appW - 50 : (appW - 500) > 1275 ? 1275 : appW - 500;
 			    if (isStart) $('.sliderWrap').css({'left': 50, 'width': appW - 50});
 			    else $('.sliderWrap').css({'left': 450, 'width': appW - 450});
