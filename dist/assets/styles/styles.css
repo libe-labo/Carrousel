@@ -153,7 +153,7 @@ article .content sup{color:#757576}
 article .content sup a{border-bottom:transparent}
 article .content sup a:hover{color:#e91845}
 article .content .question{font-weight:400}
-article .content .question::before{content:'';display:inline-block;float:left;margin-right:16px;width:67.2px;height:60px;background-image:url('http://s1.libe.com/newsite/images/illu-question.svg?0153cb59bc00');background-repeat:no-repeat;background-position:center;margin-top:13px}
+article .content .question::before{content:'';display:inline-block;float:left;margin-right:16px;width:67.2px;height:60px;background-image:url('https://statics.liberation.fr/newsite/images/illu-question.svg?0153cb59bc00');background-repeat:no-repeat;background-position:center;margin-top:13px}
 article .content .question+.note{font-family:'syntheselibeweb',sans-serif;color:#353535;font-size:.7em;line-height:1.2em;margin-top:15px;border-bottom:1px solid #ededed;padding-bottom:30px}
 article .content img{max-width:100%;height:auto;margin:20px 0}
 article .content img{cursor:zoom-in}
