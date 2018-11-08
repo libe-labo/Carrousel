@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+        <title>Libération.fr – Checknews : tout ce que vous nous avez demandé sur le carburant</title>
+        <meta name="description" content="Tout savoir sur les dernières actualités politiques, monde, société, sports, écologie avec le journal en ligne Libération.">
+        <meta name="keywords" content="actualités, news">
+
+        <link rel="shortcut icon" href="https://www.liberation.fr/favicon.ico">
+
+        <link rel="canonical" href="https://www.liberation.fr/apps/BB/checknews-carburant/">
+
+        <meta property="og:site_name" content="Libération.fr"/>
+        <meta property="og:url" content="https://www.liberation.fr/apps/BB/checknews-carburant/" />
+        <meta property="og:title" content="Checknews : tout ce que vous nous avez demandé sur le carburant" />
+        <meta property="og:description" content="Vous nous avez envoyé de très nombreuses questions sur la polémique autour de la hausse des prix des carburants, sur fond de taxes en hausse. Voici nos réponses." />
+        <meta property="og:image" content="https://www.liberation.fr/apps/BB/checknews-carburant/social.jpg" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@libe" />
+        <meta name="twitter:creator" content="@libe" />
+        <meta name="twitter:url" content="https://www.liberation.fr/apps/BB/checknews-carburant/" />
+        <meta name="twitter:title" content="Checknews : tout ce que vous nous avez demandé sur le carburant" />
+        <meta name="twitter:description" content="Vous nous avez envoyé de très nombreuses questions sur la polémique autour de la hausse des prix des carburants, sur fond de taxes en hausse. Voici nos réponses." />
+        <meta name="twitter:image" content="https://www.liberation.fr/apps/BB/checknews-carburant/social.jpg">
+
+        <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+            height:100%;
+            width:100%;
+        }
+        #libe-menu {
+            height: auto !important;
+        }
+        </style>
+        
+        <!-- Vendor -->
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+
+        <!-- Styles -->
+        <link type="text/css" rel="stylesheet" href="assets/styles/font-awesome.css">
+        <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+        <link type="text/css" rel="stylesheet" href="assets/styles/styles.css">
+        <link type="text/css" rel="stylesheet" href="assets/styles/checknews.css">
+    </head>
+    <body>
+
+        <div id="app">
+            <div class="panel animation">
+                <div class="intro animation">
+                    <h1 v-html="titre"></h1>
+                    <div class="logochecknews">
+                        <a href="https://www.liberation.fr/checknews,100893" target="_blank">
+                            <img src="assets/logo-checknews.gif">
+                        </a>
+                    </div>
+                    <p v-html="chapo"></p>
+                    <p class="desktop">Cliquez sur chaque fiche pour en découvrir le contenu.</p>
+                    <p class="start mobile" v-on:click="$updateSlide()">Commencer</p>
+                    <p class=credits>Production&nbsp;: Six&nbsp;Plus. Libération.fr</p>
+                    <p class=credits>Textes : {{auteur}}</p>
+                    <div class="btnShare">
+                        <div class="btnFacebook" v-on:click="facebook">
+                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                        </div>
+                        <div class="btnTwitter" v-on:click="twitter">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="logo">
+                        <a href="https://www.liberation.fr/data-nouveaux-formats-six-plus,100538" target="_blank">
+                            <img src="assets/LOGO_SIXPLUS.svg">
+                        </a>
+                    </div>
+                </div>
+                <div class="menu animation">
+                    <h1 v-html="titre"></h1>
+                    <ul>
+                        <li v-for="m in articles" v-on:click="open(true, $event)">
+                            <span class="smallPicto">{{ m.image }}</span><span v-html="m.titre"></span>
+                        </li>
+                    </ul>
+                    <div class="closeMenu" v-on:click="hideMenu"></div>
+                </div>
+                <div class="nav">
+                    <div class="titleNav" v-html="titre"></div>
+                    <div class="btnNext" v-on:click="next()"></div>
+                    <div class="btnPrev" v-on:click="prev()"></div>
+                    <div class="btnNav" v-on:click="showMenu()"></div>
+                </div>
+            </div>
+            <div class="sliderWrap animation">
+                <section class="slider animation">
+                    <article class="article animation" v-for="v in articles" v-bind:class="{openArticle: v.isOpen}">
+                        <div class="num animation">
+                            {{ v.image }}
+                        </div>
+                        <div class="picture">
+                            <img v-bind:src="v.photo" v-bind:alt="v.legende">
+                        </div>
+                        <header>
+                            <div class="caption"><span v-html="v.legende"></span><span class="credit" v-html="v.credit"></span></div>
+                            <h1 v-html="v.titre"></h1>
+                            <div class="article-head-metas">
+                                <span class="authors">
+                                    <span class="author" v-html="v.auteur"></span>
+                                </span>
+                                —
+                                <span class="date">
+                                    <time datetime="" v-html="v.date"></time>
+                                </span>
+                            </div>
+                            <h2 v-html="v.chapo"></h2>
+                        </header>
+                        <div class="content" v-html="v.texte"></div>
+                        <div class="closeArticle" v-on:click="close()" v-show="v.isOpen">
+                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="btnArticle" v-on:click="open(false, $event)"></div>
+                    </article>
+                </section>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script type="text/javascript" src="assets/scripts/app.js"></script>
+
+        <!-- Header -->
+        <script type="text/javascript" src="//www.liberation.fr/menu/script.js"></script>
+
+        <!-- Chartbeat -->
+        <script type='text/javascript'>
+            var _sf_async_config={};
+            _sf_async_config.uid = 43601;
+            _sf_async_config.domain = 'liberation.fr';
+            _sf_async_config.useCanonical = true;
+            _sf_async_config.sections = "Static";
+            _sf_async_config.authors = "Static";
+            (function(){
+                function loadChartbeat() {
+                    window._sf_endpt=(new Date()).getTime();
+                    var e = document.createElement('script');
+                    e.setAttribute('language', 'javascript');
+                    e.setAttribute('type', 'text/javascript');
+                    e.setAttribute('src', 'https://static.chartbeat.com/' + 'js/chartbeat.js');
+                    document.body.appendChild(e);
+                }
+                var oldonload = window.onload;
+                window.onload = (typeof window.onload != 'function') ?
+                loadChartbeat : function() { oldonload(); loadChartbeat(); };
+            })();
+        </script>
+        <!-- // Chartbeat -->
+
+        <!-- Google Analytics -->
+        <script type="text/javascript">
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+         ga('create', 'UA-41822557-1', 'auto');
+         ga('send', 'pageview');
+        </script>
+        <!-- // Google Analytics -->
+
+        <!-- Xiti -->
+        <script type="text/javascript">
+            xtnv = document;
+            xtsd = "https://logliberation";
+            xtsite = "381060";
+            xtn2 = "48";
+            xtpage = "Static::Data::Checknews::Essence::Carburant";
+            xtdi = "";
+            xt_pagetype = "";
+            xt_multc = "&x1=0&x2=43&x3=&x4=&x5=&x6=7&x7=";
+            xt_an = "";
+            xt_ac = "";
+            if (window.xtparam==null) { window.xtparam = ''; }
+            window.xtparam += "&ptype="+xt_pagetype+"&ac="+xt_ac+"&an="+xt_an+xt_multc;
+        </script>
+        <noscript>
+            <img width="1" height="1" src="https://logliberation.xiti.com/hit.xiti?s=381060&amp;s2=56&amp;p=Static::Data::&amp;di=&amp;" >
+        </noscript>
+        <script type="text/javascript" src="https://statics.liberation.fr/bloom/theme/js/xtcore.js"></script>
+        <!-- // Xiti -->
+    </body>
+</html>

@@ -52,12 +52,12 @@ transform: translate(-50%, -50%);
 .logo {width: 80px; margin: 0 auto;}
 .logo img {width: 100%;}
 
-/*.menu {position: absolute; top: 0; left: 0; width: 0; height: 100%; font-family: 'libesansweb-semicondensed'; letter-spacing: .08em; background: #222; color: #fff; overflow: hidden;}
+.menu {position: absolute; top: 0; left: 0; width: 0; height: 100%; font-family: 'libesansweb-semicondensed'; letter-spacing: .08em; background: #222; color: #fff; overflow: hidden;}
 .menu h1 {margin: 0; padding: 10px 50px; font-size: 2em; line-height: 1.8em; font-weight: 800;}
 .menu ul {margin: 0; padding: 15px 50px; height: 86%; overflow-y: auto;}
 .menu li {clear: both; margin-bottom: 5px; font-size: 1.2em; line-height: 25px; cursor: pointer; overflow: hidden;}
 .menu li .smallPicto {height: 25px; margin-right: 15px; background-size: 100%; background-position: top left; background-repeat: no-repeat;}
-.menu li .smallPicto img {width: 100%;}*/
+.menu li .smallPicto img {width: 100%;}
 .closeMenu {position: absolute; top: 15px; right: 15px; width: 50px; height: 50px; cursor: pointer;}
 .closeMenu:before, .closeMenu:after{content:''; height:4px; width:40px; display:block; background:#fff; position:absolute; top:22px; left:6px; transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg);}
 .closeMenu:after{transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);}
@@ -134,7 +134,7 @@ article .content .inter-simple{display:block}
 article .content h5{font-family:'syntheselibeweb',sans-serif;color:#353535;font-weight:600;font-size:1em;margin-top:35px;margin-bottom:5px}
 article .content .inner-text-spacer,article .content .inner-text{float:left;clear:left}
 article .content .inner-text-spacer{height:4.8em}
-article .content blockquote{max-width:244px;margin:30px 46px;margin-left:0;text-align:center}
+article .content blockquote{margin:30px 46px;margin-left:0;text-align:center}
 article .content blockquote.full-width{max-width:100%;margin:30px 46px;margin-left:0;text-align:left}
 article .content blockquote q{font-family:'libetypewriter-regular-underline',serif;font-size:1.35em;line-height:1.2em}
 article .content .article-image{margin:30px 0;margin-left:-40px}
@@ -179,6 +179,69 @@ article .content p.others:hover{background-color:#f9f7f8}
 article .content p.others a:hover{background-color:transparent;padding:0;min-height:auto!important;display:inline;border:0}
 article .content h5.question{display:inline-block}
 
+article .content blockquote {
+  color: #666;
+  font-style: italic;
+  text-align: left;
+  border-left: 4px solid #BBB;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+article .content blockquote::before {
+  content: "« ";
+}
+article .content blockquote::after {
+  content: " »";
+}
+
+article .content blockquote.twitter-tweet {
+  position: relative;
+  background: #009fe3;
+  color: #FFFFFF;
+  font-family: syntheselibeweb;
+  font-style: unset;
+  border-left: unset;
+  padding-left: unset;
+  padding: 15px;
+  font-size: 12px;
+}
+article .content blockquote.twitter-tweet::before,
+article .content blockquote.twitter-tweet::after {
+  content: unset;
+}
+
+article .content blockquote.twitter-tweet::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  top: auto;
+  left: 80px;
+  bottom: -20px;
+  border-width: 20px 20px 0 0;
+  border-color: #009fe3 transparent transparent transparent;
+}
+
+article .content blockquote.twitter-tweet a {
+  color: #FFF;
+  border-bottom-color: #FFF;
+}
+
+article .content blockquote.twitter-tweet p {
+  margin: 0;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+article .content blockquote.twitter-tweet p:last-child {
+  margin-bottom: 0;
+}
+
+iframe {
+  height: 500px;
+}
 
 @media (max-width: 1280px) {
   article .closeArticle {right: 5px;}
